@@ -16,5 +16,12 @@ namespace Bookstore
         {
             InitializeComponent();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = null;
+            Models.AppContext _context = new Models.AppContext();
+            dataGridView1.DataSource = _context.Requests();
+        }
     }
 }
