@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -51,11 +49,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -70,7 +68,6 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             // 
@@ -81,29 +78,9 @@
             this.splitContainer1.SplitterDistance = 312;
             this.splitContainer1.TabIndex = 0;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.button6);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox3.Location = new System.Drawing.Point(12, 568);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(287, 67);
-            this.groupBox3.TabIndex = 16;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Оформление заказов";
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.PeachPuff;
-            this.button6.Location = new System.Drawing.Point(23, 32);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(243, 26);
-            this.button6.TabIndex = 16;
-            this.button6.Text = "Перейти";
-            this.button6.UseVisualStyleBackColor = false;
-            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button6);
             this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.button3);
@@ -111,7 +88,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
             this.groupBox2.Location = new System.Drawing.Point(12, 384);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(287, 155);
+            this.groupBox2.Size = new System.Drawing.Size(287, 206);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Редактирование базы";
@@ -119,7 +96,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.PeachPuff;
-            this.button5.Location = new System.Drawing.Point(23, 130);
+            this.button5.Location = new System.Drawing.Point(23, 162);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(243, 26);
             this.button5.TabIndex = 15;
@@ -129,7 +106,7 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.PeachPuff;
-            this.button4.Location = new System.Drawing.Point(23, 98);
+            this.button4.Location = new System.Drawing.Point(23, 130);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(243, 26);
             this.button4.TabIndex = 14;
@@ -139,7 +116,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.PeachPuff;
-            this.button3.Location = new System.Drawing.Point(23, 66);
+            this.button3.Location = new System.Drawing.Point(23, 98);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(243, 26);
             this.button3.TabIndex = 13;
@@ -153,7 +130,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(243, 26);
             this.button2.TabIndex = 12;
-            this.button2.Text = "Добавить / удалить книги";
+            this.button2.Text = "Добавить";
             this.button2.UseVisualStyleBackColor = false;
             // 
             // groupBox1
@@ -329,6 +306,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(1148, 651);
             this.dataGridView1.TabIndex = 0;
             // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.PeachPuff;
+            this.button6.Location = new System.Drawing.Point(23, 66);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(243, 26);
+            this.button6.TabIndex = 16;
+            this.button6.Text = "Удалить книгу";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -343,7 +330,6 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -373,10 +359,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
     }
 }
 
