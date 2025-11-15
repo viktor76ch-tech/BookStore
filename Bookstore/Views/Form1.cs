@@ -2,7 +2,7 @@
 using Bookstore.Views;
 using Bookstore.Models;
 using System;
-using System.Security.Policy;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -17,9 +17,7 @@ namespace Bookstore
 
         private void button7_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null;
-            Models.AppContext _context = new Models.AppContext();
-            dataGridView1.DataSource = _context.AcquisitionData();
+            updateTable();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -29,6 +27,7 @@ namespace Bookstore
             string name_but = "Добавить книгу";
             Form2 form2 = new Form2(name_win, name_but, b);
             form2.ShowDialog();
+            updateTable();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -39,6 +38,7 @@ namespace Bookstore
 
             Requests delB = new Requests();
             delB.DeleteBook(idBook);
+            updateTable();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -63,6 +63,77 @@ namespace Bookstore
             string name_but = "Изменить";
             Form2 form2 = new Form2(name_win, name_but, changeBook);
             form2.ShowDialog();
+            updateTable();
+        }
+        public void updateTable()
+        {
+            dataGridView1.DataSource = null;
+            Models.AppContext _context = new Models.AppContext();
+            dataGridView1.DataSource = _context.AcquisitionData();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string strS = textBox1.Text;
+            if(textBox1.Text!= "") 
+            {
+                textBox2.Text = "";
+                comboBox1.Text = "";
+                dataGridView1.DataSource = null;
+                Requests sB = new Requests();
+                dataGridView1.DataSource = sB.SearchBook("Name", strS);
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            string strS = textBox2.Text;
+            if (textBox2.Text != "")
+            {
+                textBox1.Text = "";
+                comboBox1.Text = "";
+                dataGridView1.DataSource = null;
+                Requests sB = new Requests();
+                dataGridView1.DataSource = sB.SearchBook("LastName", strS);
+            }
+        }
+
+        private void comboBox1_TextChanged(object sender, EventArgs e)
+        {
+            string strS = comboBox1.Text;
+            if (comboBox1.Text != "")
+            {
+                textBox1.Text = "";
+                textBox2.Text = "";
+                dataGridView1.DataSource = null;
+                Requests sB = new Requests();
+                dataGridView1.DataSource = sB.SearchBook("Genre", strS);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox3.Text == "" && textBox4.Text == "") 
+            {
+                MessageBox.Show("Не введены критерии для поиска", "Уведомление");
+                return;
+            }
+            if (textBox3.Text != "" && textBox4.Text == "") { }
+            if (textBox3.Text == "" && textBox4.Text != "") { }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            comboBox1.Text = "";
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            comboBox1.Text = "";
         }
     }
 }

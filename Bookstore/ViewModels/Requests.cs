@@ -1,5 +1,6 @@
 ﻿using Bookstore.Models;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Security.Policy;
 using System.Windows.Forms;
@@ -9,7 +10,9 @@ namespace Bookstore.ViewModels
 {
     internal class Requests
     {
+        private SqlDataReader reader;
         private SqlConnection conn;
+        private DataTable table;
         public void AddBook(Book newBook)
         {
             string comd;
@@ -143,6 +146,44 @@ namespace Bookstore.ViewModels
                 MessageBox.Show("Книга успешно Изменена", "Уведомление");
             }
             conn.Close();
+        }
+
+        public DataTable SearchBook(string stolb, string partWord)
+        {
+            conn = new SqlConnection();
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["MyConnString"].ConnectionString;
+            conn.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT * FROM Books WHERE " + stolb + " LIKE N'" + partWord + "%';";
+            cmd.Connection = conn;
+            table = new DataTable();
+            reader = cmd.ExecuteReader();
+            int line = 0;
+            do
+            {
+                while (reader.Read())
+                {
+                    if (line == 0)
+                    {
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            table.Columns.Add(reader.GetName(i));
+                        }
+                        line++;
+                    }
+                    DataRow row = table.NewRow();
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        row[i] = reader[i];
+
+                    }
+                    table.Rows.Add(row);
+                }
+            } while (reader.NextResult());
+
+            reader.Close();
+            conn.Close();
+            return table;
         }
     }
 }
