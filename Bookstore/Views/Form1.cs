@@ -1,8 +1,9 @@
-﻿using Bookstore.ViewModels;
+﻿using Bookstore.Models;
+using Bookstore.ViewModels;
 using Bookstore.Views;
-using Bookstore.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -118,8 +119,27 @@ namespace Bookstore
                 MessageBox.Show("Не введены критерии для поиска", "Уведомление");
                 return;
             }
-            if (textBox3.Text != "" && textBox4.Text == "") { }
-            if (textBox3.Text == "" && textBox4.Text != "") { }
+            if (textBox3.Text != "" && textBox4.Text == "") 
+            {
+                string s1 = "SELECT * FROM Books WHERE Price > (" + textBox3.Text + ")";
+                dataGridView1.DataSource = null;
+                Requests sBP = new Requests();
+                dataGridView1.DataSource = sBP.SearchBookPrice(s1);
+            }
+            if (textBox3.Text == "" && textBox4.Text != "") 
+            {
+                string s2 = "SELECT * FROM Books WHERE Price < (" + textBox4.Text + ")";
+                dataGridView1.DataSource = null;
+                Requests sBP = new Requests();
+                dataGridView1.DataSource = sBP.SearchBookPrice(s2);
+            }
+            if (textBox3.Text != "" && textBox4.Text != "") 
+            {
+                string s3 = "SELECT * FROM Books WHERE Price BETWEEN(" + textBox3.Text + ") AND (" + textBox4.Text + ")";
+                dataGridView1.DataSource = null;
+                Requests sBP = new Requests();
+                dataGridView1.DataSource = sBP.SearchBookPrice(s3);
+            }
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)

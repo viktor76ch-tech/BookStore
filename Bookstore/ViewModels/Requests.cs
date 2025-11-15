@@ -185,5 +185,42 @@ namespace Bookstore.ViewModels
             conn.Close();
             return table;
         }
+        public DataTable SearchBookPrice(string req)
+        {
+            conn = new SqlConnection();
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["MyConnString"].ConnectionString;
+            conn.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = req;
+            cmd.Connection = conn;
+            table = new DataTable();
+            reader = cmd.ExecuteReader();
+            int line = 0;
+            do
+            {
+                while (reader.Read())
+                {
+                    if (line == 0)
+                    {
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            table.Columns.Add(reader.GetName(i));
+                        }
+                        line++;
+                    }
+                    DataRow row = table.NewRow();
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        row[i] = reader[i];
+
+                    }
+                    table.Rows.Add(row);
+                }
+            } while (reader.NextResult());
+
+            reader.Close();
+            conn.Close();
+            return table;
+        }
     }
 }
