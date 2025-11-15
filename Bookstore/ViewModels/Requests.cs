@@ -1,7 +1,8 @@
-﻿using System.Configuration;
+﻿using Bookstore.Models;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Security.Policy;
-using Bookstore.Models;
+using System.Windows.Forms;
 
 
 namespace Bookstore.ViewModels
@@ -19,17 +20,23 @@ namespace Bookstore.ViewModels
                 "N'" + newBook.FirstName + "', " +
                 "N'" + newBook.Genre + "', " +
                 "N'" + newBook.Publisher + "', " +
-                newBook.YearPub.ToString() + "," +
-                newBook.Pages.ToString() + "," +
-                newBook.CostPrice.ToString() + "," +
-                newBook.Price.ToString() + "," +
-                newBook.CostPrice.ToString() + ")";
+                newBook.YearPub.ToString() + ", " +
+                newBook.Pages.ToString() + ", " +
+                newBook.CostPrice.ToString() + ", " +
+                newBook.Price.ToString() + ", " +
+                newBook.CostPrice.ToString() + ");";
             conn = new SqlConnection();
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["MyConnString"].ConnectionString;
             conn.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = comd;
             cmd.Connection = conn;
+            int str = 0;
+            str = cmd.ExecuteNonQuery();
+            if (str > 0)
+            {
+                MessageBox.Show("Книга успешно добавлена", "Уведомление");
+            }
             conn.Close();
         }
     }

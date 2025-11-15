@@ -1,6 +1,7 @@
 ﻿using Bookstore.Models;
 using Bookstore.ViewModels;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Bookstore.Views
@@ -16,6 +17,19 @@ namespace Bookstore.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
+            foreach (var pb in this.Controls.OfType<TextBox>())
+            {
+                if (pb.Text == "")
+                {
+                    MessageBox.Show("Не все данные введены", "Уведомление");
+                    return;
+                }   
+            }
+            if (comboBox1.Text == "")
+            {
+                MessageBox.Show("Не все данные введены", "Уведомление");
+                return;
+            }
             Book newBook = new Book();
             newBook.Name = textBox1.Text;
             newBook.LastName = textBox2.Text;
