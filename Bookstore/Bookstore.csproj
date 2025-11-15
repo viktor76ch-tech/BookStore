@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Models\AppContext.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="ViewModels\Requests.cs" />
     <Compile Include="Views\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

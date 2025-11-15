@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bookstore.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +22,15 @@ namespace Bookstore
         {
             dataGridView1.DataSource = null;
             Models.AppContext _context = new Models.AppContext();
-            dataGridView1.DataSource = _context.Requests();
+            dataGridView1.DataSource = _context.AcquisitionData();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string name_win = "Добавление книги";
+            string name_but = "Добавить книгу";
+            Form2 form2 = new Form2(name_win, name_but);
+            form2.ShowDialog();
         }
     }
 }

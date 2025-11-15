@@ -13,7 +13,7 @@ namespace Bookstore.Models
         private SqlConnection conn;
         private DataTable table;
         string cs = "";
-        public DataTable Requests()
+        public DataTable AcquisitionData()
         {
             conn = new SqlConnection();
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["MyConnString"].ConnectionString;

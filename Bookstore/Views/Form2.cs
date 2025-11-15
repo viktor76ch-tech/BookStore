@@ -12,9 +12,11 @@ namespace Bookstore.Views
 {
     public partial class Form2 : Form
     {
-        public Form2()
+        public Form2(string nw, string nb)
         {
             InitializeComponent();
+            label11.Text = nw;
+            button1.Text = nb;
         }
     }
 }

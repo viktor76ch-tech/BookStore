@@ -30,6 +30,7 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -49,7 +50,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -93,6 +93,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Редактирование базы";
             // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.PeachPuff;
+            this.button6.Location = new System.Drawing.Point(23, 66);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(243, 26);
+            this.button6.TabIndex = 16;
+            this.button6.Text = "Удалить книгу";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.PeachPuff;
@@ -130,8 +140,9 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(243, 26);
             this.button2.TabIndex = 12;
-            this.button2.Text = "Добавить";
+            this.button2.Text = "Добавить книгу";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox1
             // 
@@ -305,16 +316,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1148, 651);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.PeachPuff;
-            this.button6.Location = new System.Drawing.Point(23, 66);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(243, 26);
-            this.button6.TabIndex = 16;
-            this.button6.Text = "Удалить книгу";
-            this.button6.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
