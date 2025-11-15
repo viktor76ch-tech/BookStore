@@ -24,7 +24,7 @@ namespace Bookstore.ViewModels
                 newBook.Pages.ToString() + ", " +
                 newBook.CostPrice.ToString() + ", " +
                 newBook.Price.ToString() + ", " +
-                newBook.CostPrice.ToString() + ");";
+                newBook.Number.ToString() + ");";
             conn = new SqlConnection();
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["MyConnString"].ConnectionString;
             conn.Open();
@@ -66,6 +66,81 @@ namespace Bookstore.ViewModels
             if (str > 0)
             {
                 MessageBox.Show("Книга успешно удалена", "Уведомление");
+            }
+            conn.Close();
+        }
+
+        public void СhangeBook(Book oldBook, Book nBook)
+        {
+            conn = new SqlConnection();
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["MyConnString"].ConnectionString;
+            conn.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            int str = 0;
+            if (oldBook.Name != nBook.Name) 
+            {
+                cmd.CommandText = "UPDATE Books\r\nSET Name = N'" + nBook.Name + "'" +
+                    "\r\nWHERE Id = " + nBook.Id.ToString() + ";";
+                str = cmd.ExecuteNonQuery();
+            }
+            if (oldBook.LastName != nBook.LastName)
+            {
+                cmd.CommandText = "UPDATE Books\r\nSET LastName = N'" + nBook.LastName + "'" +
+                    "\r\nWHERE Id = " + nBook.Id.ToString() + ";";
+                str = cmd.ExecuteNonQuery();
+            }
+            if (oldBook.FirstName != nBook.FirstName)
+            {
+                cmd.CommandText = "UPDATE Books\r\nSET FirstName = N'" + nBook.FirstName + "'" +
+                    "\r\nWHERE Id = " + nBook.Id.ToString() + ";";
+                str = cmd.ExecuteNonQuery();
+            }
+            if (oldBook.Genre != nBook.Genre)
+            {
+                cmd.CommandText = "UPDATE Books\r\nSET Genre = N'" + nBook.Genre + "'" +
+                    "\r\nWHERE Id = " + nBook.Id.ToString() + ";";
+                str = cmd.ExecuteNonQuery();
+            }
+            if (oldBook.Publisher != nBook.Publisher)
+            {
+                cmd.CommandText = "UPDATE Books\r\nSET Publisher = N'" + nBook.Publisher + "'" +
+                    "\r\nWHERE Id = " + nBook.Id.ToString() + ";";
+                str = cmd.ExecuteNonQuery();
+            }
+            if (oldBook.YearPub != nBook.YearPub)
+            {
+                cmd.CommandText = "UPDATE Books\r\nSET YearPub = " + nBook.YearPub.ToString() +
+                    "\r\nWHERE Id = " + nBook.Id.ToString() + ";";
+                str = cmd.ExecuteNonQuery();
+            }
+            if (oldBook.Pages != nBook.Pages)
+            {
+                cmd.CommandText = "UPDATE Books\r\nSET Pages = " + nBook.Pages.ToString() +
+                    "\r\nWHERE Id = " + nBook.Id.ToString() + ";";
+                str = cmd.ExecuteNonQuery();
+            }
+            if (oldBook.CostPrice != nBook.CostPrice)
+            {
+                cmd.CommandText = "UPDATE Books\r\nSET CostPrice = " + nBook.CostPrice.ToString() +
+                    "\r\nWHERE Id = " + nBook.Id.ToString() + ";";
+                str = cmd.ExecuteNonQuery();
+            }
+            if (oldBook.Price != nBook.Price)
+            {
+                cmd.CommandText = "UPDATE Books\r\nSET Price = " + nBook.Price.ToString() +
+                    "\r\nWHERE Id = " + nBook.Id.ToString() + ";";
+                str = cmd.ExecuteNonQuery();
+            }
+            if (oldBook.Number != nBook.Number)
+            {
+                cmd.CommandText = "UPDATE Books\r\nSET Number = " + nBook.Number.ToString() +
+                    "\r\nWHERE Id = " + nBook.Id.ToString() + ";";
+                str = cmd.ExecuteNonQuery();
+            }
+            if (str > 0)
+            {
+                MessageBox.Show("Книга успешно Изменена", "Уведомление");
             }
             conn.Close();
         }
