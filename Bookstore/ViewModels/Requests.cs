@@ -39,5 +39,35 @@ namespace Bookstore.ViewModels
             }
             conn.Close();
         }
+
+        public void DeleteBook(string idBook)
+        {
+            string comd;
+            comd = "DELETE FROM Books\r\nWHERE Id = " + idBook + ";";
+            conn = new SqlConnection();
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["MyConnString"].ConnectionString;
+            conn.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = comd;
+            cmd.Connection = conn;
+            int str = 0;
+
+            DialogResult result = MessageBox.Show("Вы точно хотите удалить книгу", "Подтверждение удаления", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                str = cmd.ExecuteNonQuery();
+            }
+            else
+            {
+                conn.Close();
+                return;
+            }
+
+            if (str > 0)
+            {
+                MessageBox.Show("Книга успешно удалена", "Уведомление");
+            }
+            conn.Close();
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Bookstore.Views;
 using System;
 using System.Windows.Forms;
+using Bookstore.ViewModels;
 
 namespace Bookstore
 {
@@ -24,6 +25,16 @@ namespace Bookstore
             string name_but = "Добавить книгу";
             Form2 form2 = new Form2(name_win, name_but);
             form2.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+            string idBook = Convert.ToString(selectedRow.Cells["Id"].Value);
+
+            Requests delB = new Requests();
+            delB.DeleteBook(idBook);
         }
     }
 }

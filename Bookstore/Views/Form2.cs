@@ -41,8 +41,18 @@ namespace Bookstore.Views
             newBook.CostPrice = float.Parse(textBox9.Text);
             newBook.Price = float.Parse(textBox8.Text);
             newBook.Number = int.Parse(textBox7.Text);
-            ViewModels.Requests ab = new ViewModels.Requests();
-            ab.AddBook(newBook);
+            Requests aB = new Requests();
+            aB.AddBook(newBook);
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+            textBox7.Text = "";
+            textBox8.Text = "";
+            textBox9.Text = "";
+            comboBox1.Text = "";
         }
     }
 }
